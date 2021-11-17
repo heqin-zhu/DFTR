@@ -1,0 +1,111 @@
+run_name: 'DFTR'
+
+batch_size: 16
+epoch: 200
+phase: 'train'
+
+save_freq: 20 # epoch
+val_freq: 2  # validate,  epoch
+show_freq: 1  # epoch
+
+gpu: '0'
+config_file: 'config.yaml'
+
+model_name: 'DFTR'
+checkpoint_path: ''
+
+dataset:
+    val_test: true
+    img_size: 352 # img_size//32
+    prefix: '/apdcephfs/share_1290796/heqinzhu/SOD_data' # TODO
+    # prefix: '../data'
+    train_name: ['train']
+    test_names: ['NLPR', 'NJU2K'] # todo
+    # test_names: ['SSD', 'NLPR_test', 'NJU2K_test', 'STERE', 'SIP']
+    # train_name: ['train',  'DUTLF_train'] # tri data
+    # test_names: ['NJU2K_test', 'NLPR_test', 'DUTLF_test', 'STERE', 'SIP', 'SSD']
+    # train_name: ['DUTS_train'] # RGB
+    # test_names: ['DUTS_test', 'ECSSD', 'DUT_OMRON', 'PASCAL_S', 'HKU_IS']
+
+
+swin_type: 'base' # 'small' # 'base'
+DFTR:
+    img_size: 352
+    patch_size: 4
+    in_chans: 3
+    embed_dim: 96
+    depths: [2, 2, 6, 2]
+    num_heads: [3, 6, 12, 24]
+    window_size: 7
+    mlp_ratio: 4.
+    qkv_bias: True
+    drop_rate: 0
+    attn_drop_rate: 0
+    drop_path_rate: 0.2
+    ape: False
+    patch_norm: True
+    out_indices: [0, 1, 2, 3]
+    out_chans: 1
+    multi_feature: True
+    residual: False
+    down_scale: 4  # embed_dim//down_scale
+    checkpoint_path: ''
+    fusion_depth: 1
+    base_path: '../data/swin_small_patch4_window7_224.pth'
+
+swin_small:
+    depths: [2, 2, 18, 2]
+    drop_path_rate: 0.3
+    base_path: '../data/swin_small_patch4_window7_224.pth'
+
+swin_base:
+    depths: [2, 2, 18, 2]
+    drop_path_rate: 0.5
+    num_heads: [4, 8, 16, 32]
+    embed_dim: 128
+    base_path: '../data/swin_base_patch4_window7_224_22kto1k.pth'
+
+swin_base_2:
+    depths: [2, 2, 18, 2]
+    drop_path_rate: 0.5
+    num_heads: [4, 8, 16, 32]
+    embed_dim: 128
+    base_path: '../data/swin_base_patch4_window7_224.pth'
+
+swin_large:
+    depths: [2, 2, 18, 2]
+    num_heads: [6, 12, 24, 48]
+    embed_dim: 192
+    base_path: '../data/swin_large_patch4_window7_224.pth'
+
+learning:
+    freeze_base: false
+    flood: 0 # 0.9  train loss flood
+    base_lr_ratio: 0.1
+    sodloss:
+        deep_supervision: False  # depth
+        mask_deep_supervision: True
+        bce_weight: 1
+        weights: [1, 0.8, 0.6, 0.4]
+        use_iou: true
+    optimizer: 'sgd'
+    sgd:
+        lr: 0.02
+        momentum: 0.9
+        weight_decay: 0.0005
+        nesterov: true
+    adam:
+        lr: 0.03
+        weight_decay: 0.0005
+    scheduler: ''
+    # scheduler: 'cycliclr'
+    cos: 
+        T_max: 20
+        eta_min: 0.0001 
+    cycliclr:
+        base_lr: 0.0004 # 0.00008
+        max_lr: 0.03 # 0.008
+        step_size_up: 3000  # step_size_up = len(dataset)/batch_size * (2~10)
+        step_size_down: 3000 # same as step_size_up
+        mode: 'triangular'
+        cycle_momentum: false
