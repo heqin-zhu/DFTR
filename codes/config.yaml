@@ -17,14 +17,13 @@ checkpoint_path: ''
 dataset:
     val_test: true
     img_size: 352 # img_size//32
-    prefix: '/apdcephfs/share_1290796/heqinzhu/SOD_data' # TODO
-    # prefix: '../data'
-    train_name: ['train']
-    test_names: ['NLPR', 'NJU2K'] # todo
-    # test_names: ['SSD', 'NLPR_test', 'NJU2K_test', 'STERE', 'SIP']
-    # train_name: ['train',  'DUTLF_train'] # tri data
+    # prefix: '/apdcephfs/share_1290796/heqinzhu/SOD_data' # TODO
+    prefix: '../data'
+    train_names: ['NLPR_train', 'NJU2K_train']
+    test_names: ['SSD', 'NLPR_test', 'NJU2K_test', 'STERE', 'SIP']
+    # train_names: ['NLPR_train', 'NJU2K_train',  'DUTLF_train'] # tri data
     # test_names: ['NJU2K_test', 'NLPR_test', 'DUTLF_test', 'STERE', 'SIP', 'SSD']
-    # train_name: ['DUTS_train'] # RGB
+    # train_names: ['DUTS_train'] # RGB
     # test_names: ['DUTS_test', 'ECSSD', 'DUT_OMRON', 'PASCAL_S', 'HKU_IS']
 
 

@@ -39,7 +39,7 @@ def train(opts, net, LOSS, savepath, begin_epoch=0, log_file=sys.stdout):
     img_size = data_opts['img_size']
     val_test = data_opts['val_test']
     datapath = data_opts['prefix']
-    data_names = data_opts['train_name']
+    data_names = data_opts['train_names']
     train_data = SODData(datapath, data_names, 'train',  img_size, val_test)
     train_loader = DataLoader(train_data, collate_fn=train_data.collate, batch_size=opts.batch_size, shuffle=True)
     val_names = [i.replace('train', 'test') for i in data_names]
