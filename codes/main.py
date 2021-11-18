@@ -227,7 +227,7 @@ if __name__ == "__main__":
 
     args = get_args()
 
-    # os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
     run_dir = args.run_dir
     savepath = os.path.join(run_dir, args.run_name)
