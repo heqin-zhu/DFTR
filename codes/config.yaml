@@ -17,7 +17,6 @@ checkpoint_path: ''
 dataset:
     val_test: true
     img_size: 352 # img_size//32
-    # prefix: '/apdcephfs/share_1290796/heqinzhu/SOD_data' # TODO
     prefix: '../data'
     train_names: ['NLPR_train', 'NJU2K_train']
     test_names: ['SSD', 'NLPR_test', 'NJU2K_test', 'STERE', 'SIP']

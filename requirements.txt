@@ -1,7 +1,8 @@
-torch>=1.7.1
-torchvision
-numpy
-timm
-opencv-python
-tqdm
-scipy
+torch==1.7.1+cu110
+torchvision==0.8.2+cu110
+numpy==1.19.5
+timm==0.4.12
+opencv-python==4.5.3.56
+tqdm==4.62.3
+scipy==1.5.4
+PyYAML==5.4.1

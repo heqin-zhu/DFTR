@@ -6,14 +6,14 @@
 
 <!-- [![](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/TODO)](https://paperswithcode.com/sota/TODO) -->
 <!--  [![License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)  copy LICENCE -->
-<!-- [![test](https://github.com/mbinary/PL0-parser/workflows/test/badge.svg)]()  -->
+<!-- [![test](https://github.com/heqin-zhu/DFTR/workflows/test/badge.svg)]()  -->
 
 PyTorch implementation
-<!-->
+<!--
 for our CVPR 2022 paper:
 DFTR: Depth-supervised Hierarchical Feature Fusion Transformer for Salient Object Detection
 Heqin Zhu, Xu Sun, Yuexiang Li, Ka ma, S.Kevin Zhou, Yefeng Zheng
-<-->
+-->
 
 ![](figures/network.png)
 
@@ -30,6 +30,7 @@ Automated salient object detection (SOD) plays an increasingly crucial role in m
     - opencv-python
     - tqdm
     - scipy
+    - PyYAML
 
 Install:
 
@@ -49,7 +50,7 @@ pip3 install -r requirements.txt
     - SIP: 929 images
     - SSD: 80 images
 
-The trainset was prepared by using script [split\_trainset.py](./data/split_trainset.py).
+The trainset was prepared by using script [data/split\_trainset.py](./data/split_trainset.py).
 
 ### RGB SOD Datasets
 - Training set
@@ -63,10 +64,10 @@ The trainset was prepared by using script [split\_trainset.py](./data/split_trai
 
 Download the above datasets from [Release](https://github.com/heqin-zhu/DFTR/releases/tag/v0.1) and unzip them in `data` folder.
 
-**The following resources, including checkpoints and saliency maps, can be downloaded from either [Release](https://github.com/heqin-zhu/DFTR/releases/tag/v0.1) or [Google Drive](https://drive.google.com/drive/folders/1oDOTBfGG2mKK8OP7rJYsaJsZotaH6GnA?usp=sharing).**
+**The following resources, including checkpoints and saliency maps, can be downloaded from [Release](https://github.com/heqin-zhu/DFTR/releases/tag/v0.1) | [Google Drive](https://drive.google.com/drive/folders/1oDOTBfGG2mKK8OP7rJYsaJsZotaH6GnA?usp=sharing).**
 
 ### Checkpoints
-Re-train DFTR from scratch with [Swin Transformer (base)](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22kto1k.pth) checkpoint or load our pre-trained [DFTR-RGB](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGB.pth) or [DFTR-RGBD](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGBD.pth). Download checkpoint and place it in `data` folder.
+Re-train DFTR from scratch with [Swin Transformer (base)](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22kto1k.pth) checkpoint or our pre-trained [DFTR-RGB](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGB.pth) | [DFTR-RGBD](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGBD.pth). Download checkpoint and place it in `data` folder.
 
 ## Training, Testing, and Evaluation
 Firstly, change current working directory as `codes` by running `cd codes`.
@@ -95,7 +96,7 @@ Switch to RGB by editing variables `train_names` and `test_names` in [config.yam
 Please run `python3 main.py -h` to see more arguments and details or modify `config.yaml` to set different configurations.
 
 ## Saliency Map Results
-The [RGB](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGB_Saliency_Maps.zip) and [RGBD](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGBD_Saliency_Maps.zip) saliency maps predicted by our DFTR are available publicly.
+The [RGB](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGB_Saliency_Maps.zip) | [RGBD](https://github.com/heqin-zhu/DFTR/releases/download/v0.1/DFTR_RGBD_Saliency_Maps.zip) saliency maps predicted by our DFTR are available publicly.
 
 ## Citation
 If you find our work is helpful, please cite 

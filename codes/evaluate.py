@@ -182,7 +182,7 @@ if __name__ == "__main__":
     # optinal
     parser.add_argument("-s", "--save_img", action='store_true')
     parser.add_argument("-d", "--depth", action='store_true')
-    parser.add_argument("-p", "--prefix", default='/apdcephfs/share_1290796/heqinzhu/SOD_data')
+    parser.add_argument("-p", "--prefix", default='../data')
     parser.add_argument("-o", "--output", type=str)
     # required
     parser.add_argument("-i", "--input", type=str, required=True)
